@@ -44,7 +44,6 @@
 #radiologi{--m:#475569;--ml:#64748B}
 #respirologi{--m:#2E6F8E;--ml:#4A8DAC}
 #tumbuhkembang{--m:#7A4A8C;--ml:#9868AC}
-#ringkasan{--m:#2F6B4F;--ml:#4C8A6C}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--tx);min-height:100vh}
 .hdr{background:var(--m);position:sticky;top:0;z-index:100;box-shadow:0 2px 16px rgba(123,45,62,.3)}
@@ -72,7 +71,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--tx);mi
 .nb[onclick*="'radiologi'"].active{color:#C7CFDA;border-bottom-color:#C7CFDA}
 .nb[onclick*="'respirologi'"].active{color:#B8D8E8;border-bottom-color:#B8D8E8}
 .nb[onclick*="'tumbuhkembang'"].active{color:#DCC3E8;border-bottom-color:#DCC3E8}
-.nb[onclick*="'ringkasan'"].active{color:#B8D9C6;border-bottom-color:#B8D9C6}
 .main{max-width:960px;margin:0 auto;padding:16px 12px 60px}
 .sec{display:none;animation:fi .3s ease}
 .sec.active{display:block}
@@ -171,6 +169,39 @@ table.rubric td.komp{font-weight:600;color:var(--m);min-width:110px}
 .acc-head.active .study-check.done{background:#fff;border-color:#fff;color:var(--gr)}
 .acc-item.done{opacity:.72}
 .div-progress-badge{font-weight:400;font-size:.62rem;color:var(--gr);text-transform:none;letter-spacing:0;margin-left:4px}
+.fav-star{width:23px;height:23px;border-radius:50%;border:none;background:transparent;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--cd);cursor:pointer;transition:all .15s;filter:none}
+.fav-star:hover{transform:scale(1.15)}
+.fav-star.active{color:var(--gold)}
+.acc-head.active .fav-star{color:rgba(255,255,255,.55)}
+.acc-head.active .fav-star.active{color:var(--gl)}
+.acc-item.is-fav{border-color:var(--gold)}
+.fav-div-tag{display:inline-block;font-size:.6rem;font-weight:700;color:var(--m);background:var(--cream);padding:3px 9px;border-radius:10px;margin-bottom:6px}
+
+/* ===== NILAI OSCE (TRACK RECORD) ===== */
+.score-stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.score-input{width:100%;padding:9px 11px;border:1.5px solid var(--cd);border-radius:9px;font-family:'DM Sans',sans-serif;font-size:.82rem;color:var(--tx);background:#fff}
+.score-input:focus{outline:none;border-color:var(--m)}
+textarea.score-input{resize:vertical;min-height:50px}
+.score-card{background:#fff;border-radius:13px;padding:12px 13px;box-shadow:var(--sh);border:1px solid var(--cd);margin-bottom:9px;display:flex;align-items:center;gap:12px}
+.score-badge{width:50px;height:50px;border-radius:13px;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;color:#fff;font-family:'Fraunces',serif}
+.score-badge .sbn{font-weight:700;font-size:1.05rem;line-height:1}
+.score-badge .sbu{font-size:.48rem;opacity:.9;margin-top:1px;text-align:center;padding:0 2px}
+.score-info{flex:1;min-width:0}
+.score-month{font-weight:700;font-size:.85rem;color:var(--tx)}
+.score-note{font-size:.72rem;color:var(--tm);margin-top:2px;line-height:1.4}
+.score-del{color:var(--tm);background:none;border:none;cursor:pointer;font-size:1rem;padding:4px;flex-shrink:0}
+.score-del:hover{color:#E74C3C}
+.score-grade-excellent{background:linear-gradient(135deg,#7C3AED,#A78BFA)}
+.score-grade-great{background:linear-gradient(135deg,var(--gr),#5EAE86)}
+.score-grade-good{background:linear-gradient(135deg,var(--gold),var(--gl))}
+.score-grade-warn{background:linear-gradient(135deg,#E8863A,#F4A96A)}
+.score-grade-low{background:linear-gradient(135deg,#E74C3C,#F2897C)}
+.motivation-box{border-radius:13px;padding:12px 14px;margin-bottom:9px;font-size:.79rem;line-height:1.6;display:flex;align-items:center;gap:10px}
+.motivation-box .mo-icon{font-size:1.5rem;flex-shrink:0}
+.motivation-up{background:linear-gradient(135deg,#E8F5EE,#D4EEE0);border:1.5px solid var(--gr);color:#1F5C3E}
+.motivation-down{background:linear-gradient(135deg,#FFF3E8,#FFE4D4);border:1.5px solid var(--or);color:#9C4A14}
+.motivation-flat{background:linear-gradient(135deg,#FFF8E8,#FFF0CE);border:1.5px solid var(--gold);color:#8A6412}
+.motivation-first{background:linear-gradient(135deg,var(--purl),#E9DFFC);border:1.5px solid var(--pur);color:#4C2A94}
 .progress-bar-track{width:100%;height:7px;background:var(--cd);border-radius:4px;overflow:hidden;margin:8px 0 2px}
 .progress-bar-fill{height:100%;background:var(--gr);border-radius:4px;transition:width .3s}
 .reset-progress-btn{font-size:.66rem;color:var(--tm);text-decoration:underline;cursor:pointer;background:none;border:none;padding:0;margin-top:6px;display:inline-block}
@@ -182,7 +213,7 @@ table.rubric td.komp{font-weight:600;color:var(--m);min-width:110px}
 .div-intro{font-size:.78rem;color:var(--tm);line-height:1.6;margin-bottom:12px}
 .acc-item{background:#fff;border-radius:13px;box-shadow:var(--sh);border:1px solid var(--cd);margin-bottom:10px;overflow:hidden}
 .acc-head{display:flex;align-items:center;gap:8px;padding:13px 14px;cursor:pointer;font-family:'Fraunces',serif;font-weight:600;font-size:.87rem;color:var(--m);background:#fff;transition:background .2s}
-.acc-head>span:not(.acc-arrow):not(.study-check){flex:1;min-width:0}
+.acc-head>span:not(.acc-arrow):not(.study-check):not(.fav-star){flex:1;min-width:0}
 .acc-head:hover{background:var(--cream)}
 .acc-head.active{background:linear-gradient(135deg,var(--m),var(--ml));color:#fff}
 .acc-head.active .station-tag{background:rgba(255,255,255,.25)}
@@ -215,6 +246,48 @@ table.rubric td.komp{font-weight:600;color:var(--m);min-width:110px}
 .tool-name{font-size:.75rem;font-weight:700;color:var(--tx);line-height:1.3;margin-bottom:3px;min-height:2.4em;display:flex;align-items:center;justify-content:center}
 .tool-sub{font-size:.62rem;color:var(--tm)}
 .tool-sub.has-content{color:var(--gr);font-weight:700}
+
+/* ===== BERANDA DASHBOARD v2 (status cards + MENU UTAMA grid + bottom tab bar) ===== */
+.hgreet{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.hgreet-txt .hg-hi{font-size:.68rem;color:var(--tm);font-weight:600}
+.hgreet-txt .hg-name{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:700;color:var(--m)}
+.hgreet-avatar{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,var(--m),var(--ml));display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0;box-shadow:var(--sh)}
+.status-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:16px}
+.status-card{background:#fff;border-radius:14px;padding:11px 6px;text-align:center;box-shadow:var(--sh);border:1px solid var(--cd);position:relative;overflow:hidden}
+.status-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--sc,var(--m))}
+.status-card .sc-icon{font-size:1.05rem;margin-bottom:3px}
+.status-card .sc-num{font-family:'Fraunces',serif;font-weight:700;font-size:1.15rem;color:var(--tx);line-height:1.1}
+.status-card .sc-lbl{font-size:.58rem;color:var(--tm);text-transform:uppercase;letter-spacing:.04em;margin-top:2px;font-weight:600}
+
+.menu-title-row{display:flex;align-items:baseline;justify-content:space-between;margin:14px 0 10px}
+.menu-title{font-size:.68rem;font-weight:800;letter-spacing:.09em;color:var(--m);text-transform:uppercase}
+.menu-title-sub{font-size:.62rem;color:var(--tm)}
+.menu-grid4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-bottom:6px}
+.menu-item{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;cursor:pointer;text-align:center;background:#fff;border-radius:16px;box-shadow:var(--sh);border:1px solid var(--cd);padding:14px 4px 11px;transition:all .15s;position:relative}
+.menu-item:hover{transform:translateY(-2px);box-shadow:var(--shh);border-color:var(--m)}
+.menu-item.empty{opacity:.55}
+.menu-ic{font-size:1.7rem;line-height:1;position:relative}
+.menu-lbl{font-size:.62rem;font-weight:600;color:var(--tm);line-height:1.25}
+.menu-badge{position:absolute;top:-9px;right:-10px;background:var(--gr);color:#fff;font-size:.5rem;font-weight:700;border-radius:8px;padding:1px 4px;min-width:14px;text-align:center;line-height:1.3;box-shadow:0 1px 4px rgba(0,0,0,.2)}
+
+.sec2-card{background:#fff;border-radius:14px;box-shadow:var(--sh);border:1px solid var(--cd);overflow:hidden;margin-bottom:10px}
+.sec2-item{display:flex;align-items:center;gap:11px;padding:11px 13px;cursor:pointer;border-bottom:1px solid var(--cd);transition:background .15s}
+.sec2-item:last-child{border-bottom:none}
+.sec2-item:hover{background:var(--cream)}
+.sec2-ic{width:38px;height:38px;border-radius:11px;background:var(--cream);display:flex;align-items:center;justify-content:center;font-size:1.05rem;flex-shrink:0}
+.sec2-txt{flex:1;min-width:0}
+.sec2-name{font-size:.8rem;font-weight:700;color:var(--tx)}
+.sec2-sub{font-size:.66rem;color:var(--tm);margin-top:1px}
+.sec2-arrow{color:var(--tm);font-size:.8rem;flex-shrink:0}
+
+.bottom-tabbar{position:fixed;left:0;right:0;bottom:0;z-index:90;background:#fff;border-top:1px solid var(--cd);box-shadow:0 -4px 20px rgba(28,20,16,.08);display:flex;max-width:960px;margin:0 auto;padding:6px 4px calc(6px + env(safe-area-inset-bottom))}
+.tab-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:5px 2px;background:none;border:none;cursor:pointer;color:var(--tm);font-family:'DM Sans',sans-serif}
+.tab-btn .tbi{font-size:1.15rem;line-height:1}
+.tab-btn .tbl{font-size:.6rem;font-weight:600}
+.tab-btn.active{color:var(--m)}
+.tab-btn.active .tbi{transform:translateY(-1px)}
+body.has-tabbar .main{padding-bottom:78px}
+@media(min-width:560px){.menu-grid4{grid-template-columns:repeat(4,1fr)}}
 
 /* IMAGES & DIALOGUE (embedded from source PDFs) */
 .osce-img{width:100%;height:auto;border-radius:10px;border:1px solid var(--cd);margin:8px 0 2px;display:block}
@@ -279,12 +352,12 @@ table.rubric td.komp{font-weight:600;color:var(--m);min-width:110px}
 .mode-btn .md{font-size:.66rem;color:var(--tm)}
 </style>
 </head>
-<body>
+<body class="has-tabbar">
 <div class="hdr">
   <div class="hdr-in">
     <div>
       <div class="htitle">OSCE Anak – Comprehensive</div>
-      <div class="hsub">PPDS IKA · 14 Divisi Subspesialis · Gastrohepatologi · Neurologi · Perinatologi · @dokrifqi</div>
+      <div class="hsub">PPDS IKA Amaranth</div>
     </div>
     <span class="badge">OSCE</span>
   </div>
@@ -305,8 +378,8 @@ table.rubric td.komp{font-weight:600;color:var(--m);min-width:110px}
     <button class="nb" onclick="showSec('respirologi',this)">🫁 Respirologi</button>
     <button class="nb" onclick="showSec('tumbuhkembang',this)">📈 Tumbuh Kembang - Pediatri Sosial</button>
     <span style="width:1px;background:rgba(255,255,255,.25);flex-shrink:0;margin:8px 2px"></span>
-    <button class="nb" onclick="showSec('ringkasan',this)">📊 Ringkasan</button>
-    <button class="nb" onclick="showSec('flashcard',this)">🃏 Flashcard</button>
+    <button class="nb" onclick="showSec('favorit',this)">⭐ Favorit</button>
+    <button class="nb" onclick="showSec('nilai',this)">🏆 Nilai OSCE</button>
     <button class="nb" onclick="showSec('kuis',this)">✏️ Kuis OSCE</button>
     <button class="nb" onclick="showSec('ujian',this)" style="font-weight:700">🎯 Latihan Ujian</button>
   </nav>
@@ -316,36 +389,88 @@ table.rubric td.komp{font-weight:600;color:var(--m);min-width:110px}
 
 <!-- ══════════════════════ BERANDA (HOME) ══════════════════════ -->
 <div id="beranda" class="sec active">
+  <div class="hgreet">
+    <div class="hgreet-txt">
+      <div class="hg-hi">Selamat belajar 👋</div>
+      <div class="hg-name">OSCE Anak PPDS</div>
+    </div>
+    <div class="hgreet-avatar">🩺</div>
+  </div>
+
   <div class="home-hero">
-    <div class="hh-top">
-      <div class="hh-avatar">🩺</div>
-      <div>
-        <div class="hh-title">OSCE Anak PPDS</div>
-        <div class="hh-sub">Program PPDS · Ilmu Kesehatan Anak</div>
-      </div>
-    </div>
-    <div class="hh-stats">
-      <div class="hh-stat"><div class="hh-num" id="statDivisi">14</div><div class="hh-lbl">Divisi</div></div>
-      <div class="hh-stat"><div class="hh-num" id="statStation">–</div><div class="hh-lbl">Station Aktif</div></div>
-      <div class="hh-stat"><div class="hh-num" id="statProgress">0/0</div><div class="hh-lbl">Dipelajari</div></div>
-    </div>
     <div class="progress-bar-track"><div class="progress-bar-fill" id="progressBarFill" style="width:0%"></div></div>
     <div style="text-align:right"><button class="reset-progress-btn" onclick="resetProgress()">↺ Reset progres belajar</button></div>
     <button class="btn btn-p btn-full" style="margin-top:12px;font-size:.95rem;padding:14px" onclick="startExam()">🎯 Mulai Ujian — Soal Diacak, Judul Disembunyikan</button>
   </div>
 
-  <div class="card">
-    <div class="ctitle"><div class="icon">💡</div> Apa itu OSCE Anak App?</div>
-    <p style="font-size:.79rem;line-height:1.65;color:var(--tm)">Kumpulan station OSCE Ilmu Kesehatan Anak — skenario klinik, anamnesis, pemeriksaan, tatalaksana, dan rubrik penilaian lengkap — disusun per divisi subspesialis, plus flashcard dan kuis untuk latihan mandiri.</p>
+  <div class="status-row">
+    <div class="status-card" style="--sc:var(--m)"><div class="sc-icon">🧩</div><div class="sc-num" id="statDivisi">14</div><div class="sc-lbl">Divisi</div></div>
+    <div class="status-card" style="--sc:var(--gr)"><div class="sc-icon">🗂️</div><div class="sc-num" id="statStation">–</div><div class="sc-lbl">Station</div></div>
+    <div class="status-card" style="--sc:var(--teal)"><div class="sc-icon">✅</div><div class="sc-num" id="statProgress">0/0</div><div class="sc-lbl">Dipelajari</div></div>
   </div>
 
   <div class="hlr"><strong>Penting:</strong> Isi disusun dari transkripsi bank soal OSCE nyata. Ini adalah <strong>alat bantu belajar</strong>, bukan pengganti dokumen resmi OSCE/pembimbing — selalu verifikasi ke sumber asli sebelum ujian.</div>
 
-  <p class="sl" style="margin-top:16px">🧩 Divisi Subspesialis</p>
-  <div class="tool-grid" id="divGrid"></div>
+  <div class="menu-title-row">
+    <span class="menu-title">Menu Utama</span>
+    <span class="menu-title-sub">14 bab stasion</span>
+  </div>
+  <div class="menu-grid4" id="divGrid"></div>
 
-  <p class="sl" style="margin-top:16px">📚 Alat Belajar</p>
-  <div class="tool-grid" id="utilGrid"></div>
+  <div class="menu-title-row">
+    <span class="menu-title">Alat Belajar</span>
+  </div>
+  <div class="sec2-card" id="utilList"></div>
+</div>
+
+<!-- ══════════════════════ FAVORIT ══════════════════════ -->
+<div id="favorit" class="sec">
+  <p class="sl">⭐ Station Favorit</p>
+  <div class="hl">Tandai station dengan ikon ⭐ di pojok kiri judul station (di divisi mana pun) untuk menambahkannya ke sini. Halaman ini hanya menampilkan station yang sudah Anda pilih, supaya belajar bisa fokus ke yang penting saja.</div>
+  <div style="text-align:right;margin:-2px 0 10px"><button class="reset-progress-btn" onclick="resetFavorites()">✕ Hapus semua favorit</button></div>
+  <div id="favList"></div>
+</div>
+
+<!-- ══════════════════════ NILAI OSCE (TRACK RECORD) ══════════════════════ -->
+<div id="nilai" class="sec">
+  <p class="sl">🏆 Track Record Nilai OSCE</p>
+  <div class="hl">Catat nilai OSCE bulanan Anda di sini untuk memantau progres belajar dari waktu ke waktu. Naik-turun itu wajar — yang penting arah jangka panjangnya 📈</div>
+
+  <div class="score-stat-grid" id="scoreStatsGrid"></div>
+  <div id="scoreMotivation"></div>
+
+  <div class="card" id="scoreChartCard" style="display:none">
+    <div class="ctitle"><div class="icon">📈</div> Grafik Perkembangan Nilai</div>
+    <div id="scoreChartWrap"></div>
+  </div>
+
+  <div class="card">
+    <div class="ctitle"><div class="icon">🎯</div> Target Nilai</div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <input type="number" id="scoreTargetInput" class="score-input" min="0" max="100" step="0.1" placeholder="cth. 80" style="flex:1">
+      <button class="btn btn-p" onclick="setScoreTarget()">Simpan</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ctitle"><div class="icon">✏️</div> Tambah Nilai Baru</div>
+    <div class="grid2">
+      <div>
+        <label style="font-size:.7rem;font-weight:600;color:var(--tm);display:block;margin-bottom:4px">Bulan Ujian</label>
+        <input type="month" id="scoreMonthInput" class="score-input">
+      </div>
+      <div>
+        <label style="font-size:.7rem;font-weight:600;color:var(--tm);display:block;margin-bottom:4px">Nilai (0–100)</label>
+        <input type="number" id="scoreValueInput" class="score-input" min="0" max="100" step="0.1" placeholder="cth. 78">
+      </div>
+    </div>
+    <label style="font-size:.7rem;font-weight:600;color:var(--tm);display:block;margin-top:9px;margin-bottom:4px">Catatan (opsional)</label>
+    <textarea id="scoreNoteInput" class="score-input" rows="2" placeholder="misal: kurang di anamnesis, komunikasi perlu diperbaiki..."></textarea>
+    <button class="btn btn-p btn-full" style="margin-top:10px" onclick="addScoreEntry()">💾 Simpan Nilai</button>
+  </div>
+
+  <p class="sl" style="margin-top:16px">📋 Riwayat Nilai</p>
+  <div id="scoreList"></div>
 </div>
 
 <!-- ══════════════════════ KEJANG DEMAM ══════════════════════ -->
@@ -13487,117 +13612,6 @@ table.rubric td.komp{font-weight:600;color:var(--m);min-width:110px}
   </div>
 </div>
 
-<!-- ══════════════════════ RINGKASAN ══════════════════════ -->
-<div id="ringkasan" class="sec">
-  <p class="sl">Ringkasan Cepat</p>
-
-  <div class="card">
-    <div class="ctitle"><div class="icon">⚡</div> Bank Soal Cepat — 20 Kasus Singkat (OSCE Pediatrik, FK Untar)</div>
-    <div class="hl">Daftar keluhan utama berikut dipakai sebagai latihan cepat menyusun diagnosis banding tanpa detail skenario tambahan — cocok untuk latihan berpikir "dengar keluhan → langsung sebut 3-5 DD teratas".</div>
-    <div class="grid3">
-      <div class="meta-chip" style="text-align:center;padding:8px">Belum bisa merangkak</div>
-      <div class="meta-chip" style="text-align:center;padding:8px">Batuk dan sesak</div>
-      <div class="meta-chip" style="text-align:center;padding:8px">Kejang berulang</div>
-      <div class="meta-chip" style="text-align:center;padding:8px">Mudah lelah</div>
-      <div class="meta-chip" style="text-align:center;padding:8px">Benjolan di leher</div>
-      <div class="meta-chip" style="text-align:center;padding:8px">Bercak putih di kulit</div>
-      <div class="meta-chip" style="text-align:center;padding:8px">BAB cair</div>
-      <div class="meta-chip" style="text-align:center;padding:8px">Demam dan mual muntah</div>
-      <div class="meta-chip" style="text-align:center;padding:8px">Bayi kuning</div>
-      <div class="meta-chip" style="text-align:center;padding:8px">Bengkak belakang telinga</div>
-      <div class="meta-chip" style="text-align:center;padding:8px">Biduran</div>
-      <div class="meta-chip" style="text-align:center;padding:8px">Bercak merah seluruh tubuh</div>
-      <div class="meta-chip" style="text-align:center;padding:8px">Lahir vakum ekstraksi</div>
-      <div class="meta-chip" style="text-align:center;padding:8px">BAK kemerahan</div>
-      <div class="meta-chip" style="text-align:center;padding:8px">Anyang-anyangen</div>
-      <div class="meta-chip" style="text-align:center;padding:8px">Demam dan ruam</div>
-      <div class="meta-chip" style="text-align:center;padding:8px">Sesak kambuh-kambuhan</div>
-      <div class="meta-chip" style="text-align:center;padding:8px">Nyeri perut</div>
-      <div class="meta-chip" style="text-align:center;padding:8px">BB tidak naik</div>
-      <div class="meta-chip" style="text-align:center;padding:8px">Kunjungan rutin</div>
-    </div>
-    <div class="hlb">Sumber asli hanya mencantumkan daftar judul ini tanpa skenario/pembahasan tambahan — gunakan sebagai starter latihan, lalu perdalam dengan station lengkap yang relevan di divisi masing-masing (mis. "Batuk dan sesak" → lihat Respirologi, "Bercak merah seluruh tubuh" → lihat Infeksi &amp; Alergi Imunologi).</div>
-  </div>
-
-  <p class="sl" style="margin-top:16px">4 Station Inti (PDF OSCE Anak)</p>
-  <div class="card">
-    <div class="ctitle"><div class="icon">📊</div> Peta 4 Station</div>
-    <table class="diag-table">
-      <tr><th>Station</th><th>Diagnosis Kunci</th><th>Fokus Keterampilan</th></tr>
-      <tr><td class="td-hi">Kejang Demam</td><td>Kejang Demam Kompleks + Rinofaringitis akut</td><td>Farmakoterapi (antipiretik + diazepam), edukasi</td></tr>
-      <tr><td class="td-hi">Hirschsprung</td><td>Hirschsprung Disease + Dehidrasi sedang</td><td>Anamnesis neonatus, RT (squirt sign), rencana bedah</td></tr>
-      <tr><td class="td-hi">Diare &amp; NGT</td><td>Diare Cair Akut + Dehidrasi Berat</td><td>Klasifikasi dehidrasi, Plan C, prosedur NGT</td></tr>
-      <tr><td class="td-hi">Resusitasi Neonatus</td><td>Asfiksia Neonatorum</td><td>Algoritma VTP–kompresi–epinefrin, skill manekin</td></tr>
-    </table>
-  </div>
-
-  <div class="card">
-    <div class="ctitle"><div class="icon">💉</div> Dosis Obat Kunci</div>
-    <table class="t">
-      <tr><th>Obat</th><th>Dosis</th></tr>
-      <tr><td>Paracetamol (antipiretik)</td><td>10–15 mg/kgBB/kali, 4–5x/hari</td></tr>
-      <tr><td>Ibuprofen (alternatif)</td><td>5–10 mg/kgBB/kali, 3–4x/hari</td></tr>
-      <tr><td>Diazepam oral (pencegahan)</td><td>0,1–0,3 mg/kgBB tiap 8 jam</td></tr>
-      <tr><td>Diazepam rektal/IV (kejang aktif)</td><td>Supp 10 mg atau IV 0,3–0,5 mg/kgBB</td></tr>
-      <tr><td>Zinc (diare akut)</td><td>20 mg/hari selama 10 hari (tetap dihabiskan walau diare sembuh)</td></tr>
-      <tr><td>Cairan Plan C (dehidrasi berat, anak &gt;1 th)</td><td>30 ml/kgBB/30 menit, lanjut 70 ml/kgBB/2,5 jam</td></tr>
-    </table>
-  </div>
-
-  <div class="card">
-    <div class="ctitle"><div class="icon">👶</div> Ambang Heart Rate — Resusitasi Neonatus</div>
-    <div class="kad-grid">
-      <div class="kad-box kad-r"><div class="kadn">HR &gt; 100</div>Bernapas &amp; merah muda → observasi</div>
-      <div class="kad-box kad-s"><div class="kadn">HR &lt; 100</div>Mulai VTP</div>
-      <div class="kad-box kad-b"><div class="kadn">HR &lt; 60</div>VTP + kompresi dada (3:1); bila tetap &lt;60 → epinefrin</div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="ctitle"><div class="icon">⚖️</div> Kejang Demam: Sederhana vs Kompleks</div>
-    <table class="diag-table">
-      <tr><th>Kriteria</th><th>Sederhana</th><th>Kompleks</th></tr>
-      <tr><td>Durasi</td><td>&lt;15 menit</td><td>&gt;15 menit</td></tr>
-      <tr><td>Sifat</td><td>Generalisata</td><td>Fokal / parsial satu sisi</td></tr>
-      <tr><td>Frekuensi</td><td>1x dalam 24 jam</td><td>Berulang &gt;1x dalam 24 jam</td></tr>
-    </table>
-    <div class="hl">Kasus di station ini masuk <strong>kompleks</strong> karena berulang &lt;24 jam meski durasi tiap episode singkat &amp; generalisata.</div>
-  </div>
-
-  <div class="card">
-    <div class="ctitle"><div class="icon">💧</div> Klasifikasi Dehidrasi (WHO) — Poin Kunci</div>
-    <table class="diag-table">
-      <tr><th>Tanda</th><th>Ringan-Sedang</th><th>Berat</th></tr>
-      <tr><td>Kesadaran</td><td>Rewel/gelisah</td><td>Lemas/menurun</td></tr>
-      <tr><td>Mata</td><td>Cowong</td><td>Sangat cowong</td></tr>
-      <tr><td>Minum</td><td>Haus, ingin minum lahap</td><td>Malas/tidak bisa minum</td></tr>
-      <tr><td>Turgor</td><td>Kembali lambat</td><td>Kembali &gt;2 detik</td></tr>
-      <tr><td>Tatalaksana</td><td>Plan B (oralit)</td><td>Plan C (IV kristaloid)</td></tr>
-    </table>
-  </div>
-
-  <div class="hlb">Catatan sumber: konten pada aplikasi ini ditranskripsi dari dokumen "OSCE Anak" (46 halaman, kombinasi ketikan digital &amp; foto berkas ujian) yang berisi 4 station pediatri lengkap. Satu station non-pediatri ("Contoh: Post Matur" — kontrol kehamilan) yang turut terselip dalam berkas tersebut tidak dimasukkan karena bukan kasus anak.</div>
-</div>
-
-<!-- ══════════════════════ FLASHCARD ══════════════════════ -->
-<div id="flashcard" class="sec">
-  <p class="sl">Flashcard – Klik kartu untuk balik</p>
-  <div class="chips" id="fcChips"></div>
-  <div class="fc-info">Kartu <span id="fcCur">1</span>/<span id="fcTot">1</span> · <span id="fcTopic" style="color:var(--m);font-weight:600">Semua</span></div>
-  <div class="fc-progress-bar"><div class="fc-progress-fill" id="fcFill"></div></div>
-  <div class="flashcard-wrap">
-    <div class="flashcard" id="fc-el" onclick="flipCard()">
-      <div class="fc-face fc-front"><div class="fc-lbl">📌 Pertanyaan</div><div class="fc-q" id="fcQ">–</div><div class="fc-hint">Klik untuk lihat jawaban 👆</div></div>
-      <div class="fc-face fc-back"><div class="fc-lbl">✅ Jawaban</div><div class="fc-a" id="fcA">–</div><div class="fc-hint">Klik untuk balik</div></div>
-    </div>
-  </div>
-  <div class="fc-ctrls">
-    <button class="btn btn-s" onclick="prevCard()">← Sebelumnya</button>
-    <button class="btn btn-p" onclick="shuffleCards()">🔀 Acak</button>
-    <button class="btn btn-p" onclick="nextCard()">Selanjutnya →</button>
-  </div>
-</div>
-
 <!-- ══════════════════════ KUIS ══════════════════════ -->
 <div id="kuis" class="sec">
   <div id="quizSetup">
@@ -13658,60 +13672,15 @@ table.rubric td.komp{font-weight:600;color:var(--m);min-width:110px}
 </div>
 
 </div>
-<script>
-const FLASHCARDS = [
-  {topic:'Kejang Demam',q:'Apa definisi kejang demam kompleks?',a:'Kejang demam yang berlangsung >15 menit, bersifat fokal/parsial satu sisi, atau berulang >1 kali dalam 24 jam. Pada kasus OSCE ini: anak kejang tonik-klonik seluruh tubuh ±2 menit lalu berhenti sendiri, namun kejang BERULANG lagi di IGD dalam <24 jam → digolongkan KOMPLEKS karena berulang.'},
-  {topic:'Kejang Demam',q:'Apa diagnosis kerja & diagnosis banding pada station Kejang Demam?',a:'Diagnosis: Kejang Demam Kompleks. Diagnosis banding: Rinofaringitis akut (batuk, pilek, faring hiperemis sebagai sumber demam).'},
-  {topic:'Kejang Demam',q:'Berapa dosis Diazepam untuk pencegahan & penanganan kejang berulang saat demam?',a:'Diazepam oral 0,1–0,3 mg/kgBB tiap 8 jam untuk pencegahan; Diazepam suppositoria 10 mg atau IV 0,3–0,5 mg/kgBB untuk kejang aktif.'},
-  {topic:'Kejang Demam',q:'Berapa dosis antipiretik pada kejang demam?',a:'Paracetamol 10–15 mg/kgBB/kali, 4–5x/hari ATAU Ibuprofen 5–10 mg/kgBB/kali, 3–4x/hari.'},
-  {topic:'Kejang Demam',q:'Apakah lumbal pungsi & EEG rutin dilakukan pada kasus kejang demam ini?',a:'TIDAK. Karena tidak ada tanda rangsang meningeal (kaku kuduk, Brudzinski/Kernig negatif) dan kesadaran pulih penuh → lumbal pungsi dan EEG TIDAK DIPERLUKAN.'},
-  {topic:'Kejang Demam',q:'Sebutkan langkah pemberian Diazepam suppositoria yang benar!',a:'Minta izin lisan ke orang tua → ambil diazepam supp dosis sesuai BB → buka tutup kemasan → masukkan ujung supp ke anus → tekan cairannya masuk → tarik aplikator, lalu tekan pantat agar anus tertutup beberapa saat supaya obat tidak keluar.'},
-  {topic:'Kejang Demam',q:'Apa saja poin edukasi pulang untuk orang tua pasien kejang demam?',a:'Ketaatan minum obat & kontrol ulang, nutrisi tetap seperti biasa, terapi pencegahan kejang saat demam (antipiretik terjadwal ± diazepam), sediakan diazepam supp di rumah, simpan obat suppositoria di suhu 2–25°C (kulkas), sediakan termometer di rumah.'},
-  {topic:'Kejang Demam',q:'Bagaimana hasil darah rutin pada kasus kejang demam ini?',a:'Hb 12,4 g/dl, Ht 36,4%, Leukosit 6.200/mm³, Trombosit 260.000/mm³, hitung jenis normal → Interpretasi: DALAM BATAS NORMAL (mendukung bukan infeksi bakteri berat/meningitis).'},
-  {topic:'Kejang Demam',q:'Apa tanda vital & antropometri pasien pada kasus kejang demam OSCE ini?',a:'Suhu 39,6°C, Nadi 104x/menit, TD 100/60mmHg, RR 35x/menit — BB 15 kg, TB 110 cm, lingkar kepala 48 cm.'},
-  {topic:'Kejang Demam',q:'Mengapa riwayat kejang demam pada keluarga penting ditanyakan?',a:'Riwayat kejang demam pada orang tua/saudara meningkatkan risiko rekurensi dan merupakan bagian penting anamnesis faktor risiko (pada kasus ini: ayah pernah kejang demam sekali saat kecil).'},
-  {topic:'Hirschsprung',q:'Apa trias klasik gejala Hirschsprung Disease pada neonatus?',a:'(1) Keterlambatan pengeluaran mekonium pertama (>24–48 jam; pada kasus: usia 2 hari), (2) Distensi/perut kembung progresif, (3) Muntah (dapat bilious/kehijauan).'},
-  {topic:'Hirschsprung',q:'Apa tanda khas colok dubur (RT) pada Hirschsprung Disease?',a:'"Squirt sign" — feses menyemprot deras saat jari ditarik keluar disertai bau busuk; tonus sfingter ani kuat; ampula recti tidak kolaps/tidak terisi feses karena segmen aganglionik distal menyempit.'},
-  {topic:'Hirschsprung',q:'Apa diagnosis banding utama Hirschsprung pada neonatus dengan gejala serupa?',a:'Mekonium plug syndrome — sumbatan mekonium sementara/fungsional, biasanya membaik setelah rangsang rektal/enema, tanpa kelainan ganglion permanen.'},
-  {topic:'Hirschsprung',q:'Apa 3 pilar tatalaksana awal Hirschsprung Disease pada kasus OSCE ini?',a:'(1) Rehidrasi cairan (koreksi dehidrasi sedang), (2) Wash out/colon lavage untuk dekompresi, (3) Rencana tatalaksana bedah definitif (pull-through procedure).'},
-  {topic:'Hirschsprung',q:'Bagaimana hasil pemeriksaan fisik abdomen pada kasus Hirschsprung ini?',a:'Abdomen cembung, venaektasi (+), bising usus (+) lembut, tanpa hiperemis/oedem dinding perut (belum ada tanda perforasi/peritonitis).'},
-  {topic:'Hirschsprung',q:'Berapa usia dan berat badan bayi pada skenario Hirschsprung ini?',a:'Usia 6 hari, BB 2,1 kg (By. Alya Nur Insani, perempuan).'},
-  {topic:'Hirschsprung',q:'Apa tanda dehidrasi yang ditemukan pada pemeriksaan fisik kasus Hirschsprung ini?',a:'UUB cekung, mukosa mulut & bibir kering, air mata (-/-) → mendukung diagnosis "Hirschsprung Disease dengan Dehidrasi sedang".'},
-  {topic:'Hirschsprung',q:'Bagaimana hasil darah rutin pada kasus Hirschsprung ini?',a:'Hb 13 g/dl, Leukosit 11.000/mm³, Trombosit 350.000/mm³ (leukosit sedikit meningkat, dapat menandakan proses inflamasi ringan akibat stasis feses).'},
-  {topic:'Hirschsprung',q:'Apa isi & jumlah residu NGT pada bayi kasus Hirschsprung ini?',a:'Cairan kuning, 2 cc/6 jam — menunjukkan NGT terpasang untuk dekompresi lambung dengan residu minimal.'},
-  {topic:'Hirschsprung',q:'Siapa penulis & referensi station Hirschsprung ini?',a:'dr. Erjan Fikri, SpB., SpBA(K) — Departemen Ilmu Bedah FK USU; referensi Buku Ajar Ilmu Bedah.'},
-  {topic:'Diare & NGT',q:'Apa diagnosis kerja tepat untuk anak dengan mata cowong, malas minum, turgor kembali >2 detik?',a:'Diare Cair Akut dengan DEHIDRASI BERAT — harus mencantumkan derajat dehidrasi secara spesifik untuk skor penuh, bukan hanya "diare" atau "diare dengan dehidrasi" saja.'},
-  {topic:'Diare & NGT',q:'Apa itu terapi cairan Plan C (WHO) untuk anak >1 tahun dengan dehidrasi berat?',a:'Kristaloid IV (infus set makro, kanul No. 20–22): 30 ml/kgBB dalam 30 menit pertama, dilanjutkan 70 ml/kgBB dalam 2,5 jam berikutnya.'},
-  {topic:'Diare & NGT',q:'Berapa dosis dan lama pemberian Zinc pada diare akut anak?',a:'Zinc 20 mg/hari, diminum sampai 10 hari — WALAUPUN diare sudah sembuh sebelum hari ke-10, obat tetap harus dihabiskan.'},
-  {topic:'Diare & NGT',q:'Apakah antibiotik rutin diberikan pada diare cair akut tanpa darah/lendir?',a:'TIDAK. Antibiotik tidak diperlukan pada diare cair akut biasa (bukan disentri), sesuai tatalaksana WHO/IDAI.'},
-  {topic:'Diare & NGT',q:'Sebutkan 5 langkah kunci pemasangan NGT sesuai rubrik OSCE!',a:'Dilakukan berurutan & sistematis: (1) memakai sarung tangan, (2) mengukur panjang NGT, (3) melumasi NGT dengan jelly, (4) memasang NGT, (5) melakukan tes patensi NGT.'},
-  {topic:'Diare & NGT',q:'Ukuran NGT dan alat apa yang dibutuhkan pada station prosedural NGT anak 3 tahun?',a:'NGT ukuran FR8, plester (tape), water-soluble lubricant (gel), spuit injeksi 2,5 ml untuk irigasi/tes patensi, pinset, handscoon, dan perlak steril.'},
-  {topic:'Diare & NGT',q:'Berapa tanda vital dan antropometri pada station "Diare Cair Akut" (anak 7 tahun)?',a:'TB 130 cm, BB 22 kg. Suhu 38°C, Nadi 130x/menit, TD 100/70mmHg, RR 24x/menit — dengan mata cowong dan turgor kulit menurun (kembali >2 detik).'},
-  {topic:'Diare & NGT',q:'Apa saja komponen anamnesis diare akut yang dinilai lengkap (skor 3) dalam rubrik OSCE?',a:'Lama diare, frekuensi diare/hari & volume, ada darah atau tidak, muntah atau tidak beserta frekuensi & volume, gejala penyerta (demam/batuk/pilek), asupan makan-minum, riwayat pengobatan, riwayat KLB diare wilayah, riwayat makanan, riwayat imunisasi (8–11 dari 11 poin untuk skor maksimal).'},
-  {topic:'Diare & NGT',q:'Apa edukasi kunci yang harus disampaikan pada orang tua pasien diare cair akut?',a:'Cuci tangan sebelum & sesudah makan/menyuapi anak, pemberian minum untuk rehidrasi, tetap berikan makan/minum biasa begitu anak mau, dan Zinc tetap diminum sampai 10 hari meski diare sudah sembuh.'},
-  {topic:'Diare & NGT',q:'Kapan indikasi pemasangan NGT untuk rehidrasi oral pada anak?',a:'Ketika rehidrasi oral konvensional (minum langsung) tidak adekuat/gagal — oralit dan Zinc diberikan melalui NGT untuk memastikan asupan cairan tetap tercapai (seperti pada skenario anak 3 tahun yang hanya mau minum oralit sedikit karena tidak suka rasanya).'},
-  {topic:'Resusitasi Neonatus',q:'Sebutkan 4 pertanyaan awal untuk menilai kondisi bayi segera setelah lahir!',a:'(1) Cukup bulan (term gestation)? (2) Cairan ketuban jernih? (3) Bernapas atau menangis? (4) Tonus otot baik? — Jika SEMUA "ya" → bayi mendapat perawatan rutin.'},
-  {topic:'Resusitasi Neonatus',q:'Jika bayi TIDAK bernapas & tonus lemah, apa langkah awal (30 detik pertama) resusitasi?',a:'Berikan kehangatan (radiant warmer), posisikan kepala untuk membuka jalan napas, keringkan + stimulasi taktil + reposisi bayi.'},
-  {topic:'Resusitasi Neonatus',q:'Kapan Ventilasi Tekanan Positif (VTP) mulai diberikan?',a:'Bila setelah langkah awal bayi masih apnea ATAU heart rate (HR) <100x/menit.'},
-  {topic:'Resusitasi Neonatus',q:'Kapan kompresi dada mulai dilakukan pada resusitasi neonatus?',a:'Bila HR tetap <60x/menit setelah 30 detik VTP efektif (dada mengembang adekuat).'},
-  {topic:'Resusitasi Neonatus',q:'Berapa rasio kompresi dada : ventilasi pada resusitasi neonatus?',a:'3:1 (3 kompresi : 1 ventilasi) dalam siklus 30 detik, kemudian evaluasi ulang HR.'},
-  {topic:'Resusitasi Neonatus',q:'Kapan epinefrin diberikan pada resusitasi neonatus?',a:'Bila HR tetap <60x/menit meskipun sudah dilakukan VTP efektif + kompresi dada terkoordinasi selama 30 detik.'},
-  {topic:'Resusitasi Neonatus',q:'Faktor risiko antepartum & intrapartum apa yang digali pada skenario OSCE ini?',a:'ANC: usia kehamilan 40 minggu, tidak ada riwayat tekanan darah tinggi/gula darah tinggi/perdarahan. Labour: Kala II lama, persalinan dibantu vacuum ekstraksi, tidak ada ketuban pecah dini.'},
-  {topic:'Resusitasi Neonatus',q:'Apa diagnosis pada skenario resusitasi neonatus OSCE ini?',a:'Asfiksia Neonatorum (bayi lahir tidak menangis/tidak bernapas, tonus lemah, HR rendah, warna kulit kebiruan yang membaik setelah resusitasi bertahap).'},
-  {topic:'Resusitasi Neonatus',q:'Apa tindak lanjut yang tepat setelah resusitasi awal di pelayanan primer pada kasus asfiksia neonatorum?',a:'Rujuk pasien ke fasilitas yang lebih lengkap DENGAN TETAP melakukan VTP selama proses rujukan, serta memberikan edukasi kepada keluarga pasien.'},
-  {topic:'Resusitasi Neonatus',q:'Sebutkan alat kunci yang wajib tersedia pada station resusitasi neonatus!',a:'Radiant warmer, kain linen kering, manekin bayi, kateter penghisap (8F/10F/12F/14F), pipa ET 2,5–4, laringoskop blade Miller 0, balon mengembang sendiri + reservoir, sungkup oksigen (0&1), sumber oksigen, ampul adrenalin, stetoskop neonatus.'},
-  {topic:'Resusitasi Neonatus',q:'Apa kepanjangan mnemonic HAIKAN pada langkah awal resusitasi neonatus?',a:'Hangatkan, Atur posisi, Isap lendir, Keringkan + isap lendir, Atur posisi kembali, Nilai (usaha napas, denyut jantung, tonus) — dilakukan dalam 30 detik pertama.'},
-  {topic:'Resusitasi Neonatus',q:'Apa kepanjangan mnemonic SRIBTA saat dada bayi tidak mengembang adekuat selama VTP?',a:'Sungkup (perbaiki perlekatan), Reposisi (semiekstensi kepala), Isap lendir, Buka mulut, Tekanan (naikkan tekanan ventilasi), Alternatif jalan napas (pertimbangkan intubasi) — langkah koreksi ventilasi.'},
-  {topic:'Resusitasi Neonatus',q:'Kapan waktu penilaian APGAR score dilakukan?',a:'Pada menit ke-1 dan ke-5 setelah lahir, dilanjutkan setiap 5 menit berikutnya sampai nilai APGAR mencapai ≥7.'},
-  {topic:'Resusitasi Neonatus',q:'Bagaimana interpretasi nilai APGAR score?',a:'7–10 = normal; 4–6 = moderately depressed (asfiksia sedang); 0–3 = severely depressed (asfiksia berat).'},
-  {topic:'Resusitasi Neonatus',q:'Apa 5 komponen penilaian APGAR score?',a:'Appearance (warna kulit), Pulse (denyut jantung), Grimace (respons refleks), Activity (tonus otot), Respiration (usaha napas) — masing-masing diberi skor 0–2.'},
-  {topic:'Resusitasi Neonatus',q:'Berapa target saturasi oksigen preduktal (SpO2) pada menit-menit awal kehidupan bayi baru lahir?',a:'Menit 1: 60–70%; menit 2: 65–85%; menit 3: 70–90%; menit 4: 75–90%; menit 5: 80–90%; menit 10: 85–90%.'},
-  {topic:'Resusitasi Neonatus',q:'Sebutkan 10 Asuhan Bayi Baru Lahir secara berurutan!',a:'(1) Jaga bayi tetap hangat, (2) Isap lendir mulut & hidung, (3) Keringkan bayi, (4) Potong tali pusat, (5) IMD, (6) Vitamin K1 1 mg IM anterolateral paha kiri, (7) Salep mata antibiotik Tetrasiklin 1%, (8) Imunisasi Hepatitis B 0,5 mL IM paha kanan 1–2 jam setelah Vit K1, (9) Anamnesis dan pemeriksaan fisik, (10) Pemulangan bayi & nilai tanda bahaya (minimal 24 jam post partum).'},
-  {topic:'Resusitasi Neonatus',q:'Sebutkan tanda bahaya (danger signs) pada bayi baru lahir yang harus diwaspadai!',a:'Tidak mau makan/minum, kejang, gerak hanya bila dirangsang, napas >60x/menit atau <30x/menit, retraksi/merintih, diare, banyak nanah di mata, serta suhu tubuh >37,5°C atau <36°C.'},
-  {topic:'Resusitasi Neonatus',q:'Bagaimana klasifikasi gangguan suhu tubuh pada neonatus?',a:'Hipotermi sedang 32–36,4°C; Hipotermi berat <32°C; Suhu tubuh tidak stabil (fluktuatif 36–39,4°C); Hipertermi >37,5°C.'},
-  {topic:'Resusitasi Neonatus',q:'Apa kegunaan Skor Downe pada neonatus dan bagaimana interpretasinya?',a:'Menilai derajat distres pernapasan neonatus berdasarkan 5 parameter (laju napas, sianosis, retraksi, merintih/grunting, air entry), dievaluasi tiap 30 menit. Interpretasi: skor <4 tidak ada distres, 4–7 distres klinis, >7 impending respiratory failure.'},
-];
 
+<div class="bottom-tabbar" id="tabbar">
+  <button class="tab-btn active" data-tab="beranda" onclick="navigateTo('beranda')"><span class="tbi">🏠</span><span class="tbl">Beranda</span></button>
+  <button class="tab-btn" data-tab="favorit" onclick="navigateTo('favorit')"><span class="tbi">⭐</span><span class="tbl">Favorit</span></button>
+  <button class="tab-btn" data-tab="kuis" onclick="navigateTo('kuis')"><span class="tbi">✏️</span><span class="tbl">Kuis</span></button>
+  <button class="tab-btn" data-tab="nilai" onclick="navigateTo('nilai')"><span class="tbi">🏆</span><span class="tbl">Nilai</span></button>
+  <button class="tab-btn" data-tab="menu" onclick="navigateTo('ujian')"><span class="tbi">🎯</span><span class="tbl">Ujian</span></button>
+</div>
+<script>
 const QUESTIONS = [
   {topic:'Kejang Demam',q:'Anak perempuan 4 tahun dibawa ke IGD dengan kejang tonik-klonik seluruh tubuh selama ±2 menit disertai demam, kejang berhenti sendiri, namun berulang kembali di IGD dalam waktu <24 jam. Riwayat kejang demam sebelumnya disangkal. Apa diagnosis paling tepat?',options:['Kejang Demam Sederhana','Kejang Demam Kompleks','Epilepsi dengan demam','Meningitis bakterialis'],correct:1,explanation:'Kejang demam dikatakan KOMPLEKS bila salah satu dari: durasi >15 menit, bersifat fokal, ATAU berulang >1x dalam 24 jam. Pada kasus ini kejang berulang di IGD dalam <24 jam sejak kejang pertama di rumah → memenuhi kriteria kompleks meski masing-masing episode berdurasi singkat (±2 menit) dan generalisata.'},
   {topic:'Kejang Demam',q:'Anak usia 3 tahun dibawa ke IGD karena kejang demam. Pada pemeriksaan neurologis didapatkan hasil normal (Brudzinski/Kernig negatif, tidak kaku kuduk) dan kesadaran anak pulih baik setelah kejang berhenti. Apa sikap paling tepat terkait pemeriksaan lumbal pungsi?',options:['Lumbal pungsi wajib dilakukan pada semua kejang demam','Lumbal pungsi dan EEG tidak diperlukan karena tidak ada tanda rangsang meningeal','EEG wajib untuk memastikan diagnosis epilepsi','Lumbal pungsi hanya bila usia <6 bulan'],correct:1,explanation:'Lumbal pungsi dipertimbangkan bila ada tanda/gejala meningitis (kaku kuduk, Brudzinski/Kernig positif, kesadaran tidak pulih). Pada kasus ini pemeriksaan neurologis normal sehingga lumbal pungsi dan EEG TIDAK DIPERLUKAN, sesuai instruksi penguji pada station ini.'},
@@ -13743,7 +13712,6 @@ const QUESTIONS = [
   {topic:'Resusitasi Neonatus',q:'Bayi baru lahir dengan laju napas 70x/menit, sianosis pada udara ruangan, retraksi ringan, merintih terdengar dengan stetoskop, dan air entry menurun. Berdasarkan Skor Downe, kondisi ini termasuk kategori?',options:['Tidak ada distres pernapasan (skor <4)','Distres klinis (skor 4–7)','Impending respiratory failure (skor >7)','Skor tidak dapat dihitung'],correct:1,explanation:'Skoring per parameter: RR 60–80=1, sianosis di udara ruangan=1, retraksi ringan=1, grunting dengan stetoskop=1, air entry menurun=1 — total skor 5, termasuk kategori distres klinis (4–7) yang memerlukan pemantauan ketat dan kemungkinan bantuan napas.'},
 ];
 
-let fcCards=[...FLASHCARDS],fcIdx=0,fcFilter='Semua';
 let qMode='belajar',qList=[],qCur=0,qScore=0,qAnswered=[];
 let timerInt=null,timeLeft=90;
 
@@ -13753,7 +13721,15 @@ function showSec(id,el){
   document.querySelectorAll('.nb').forEach(b=>b.classList.remove('active'));
   el.classList.add('active');
   window.scrollTo({top:0,behavior:'smooth'});
-  if(id==='flashcard')initFC();
+  if(id==='favorit')renderFavorites();
+  if(id==='nilai')renderScores();
+  syncTabbar(id);
+}
+function syncTabbar(id){
+  const tb=document.getElementById('tabbar');
+  if(!tb)return;
+  const tabId = (id==='beranda'||id==='favorit'||id==='kuis'||id==='nilai') ? id : 'menu';
+  tb.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active', b.dataset.tab===tabId));
 }
 const DIVISIONS = [
   {id:'alergi',icon:'🤧',name:'Alergi Imunologi'},
@@ -13772,8 +13748,7 @@ const DIVISIONS = [
   {id:'tumbuhkembang',icon:'📈',name:'Tumbuh Kembang - Pedsos'},
 ];
 const UTILS = [
-  {id:'ringkasan',icon:'📊',name:'Ringkasan Cepat',sub:'Referensi ringkas'},
-  {id:'flashcard',icon:'🃏',name:'Flashcard',sub:FLASHCARDS.length+' kartu'},
+  {id:'nilai',icon:'🏆',name:'Track Nilai OSCE',sub:'Catat nilai bulanan'},
   {id:'kuis',icon:'✏️',name:'Kuis OSCE',sub:QUESTIONS.length+' soal'},
 ];
 function navigateTo(id){
@@ -13786,19 +13761,26 @@ function renderHome(){
     const sec=document.getElementById(d.id);
     const n=sec?sec.querySelectorAll('.acc-item').length:0;
     totalStations+=n;
-    const sub=n>0?(n+' station'):'Segera hadir';
-    return `<div class="tool-card ${n>0?'has-content':''}" onclick="navigateTo('${d.id}')">
-      <div class="tool-icon">${d.icon}</div>
-      <div class="tool-name">${d.name}</div>
-      <div class="tool-sub ${n>0?'has-content':''}">${sub}</div>
+    return `<div class="menu-item ${n>0?'':'empty'}" onclick="navigateTo('${d.id}')">
+      <div class="menu-ic">${d.icon}${n>0?`<span class="menu-badge">${n}</span>`:''}</div>
+      <div class="menu-lbl">${d.name}</div>
     </div>`;
   }).join('');
-  document.getElementById('divGrid').innerHTML=divHtml;
-  document.getElementById('utilGrid').innerHTML=UTILS.map(u=>`<div class="tool-card has-content" onclick="navigateTo('${u.id}')">
-      <div class="tool-icon">${u.icon}</div>
-      <div class="tool-name">${u.name}</div>
-      <div class="tool-sub has-content">${u.sub}</div>
-    </div>`).join('');
+  const favCount=Object.keys(getFavs()).filter(k=>getFavs()[k]).length;
+  const favCardHtml=`<div class="menu-item" onclick="navigateTo('favorit')" style="--mi-bd:var(--gold)">
+      <div class="menu-ic">⭐${favCount>0?`<span class="menu-badge" style="background:var(--gold)">${favCount}</span>`:''}</div>
+      <div class="menu-lbl">Favorit</div>
+    </div>`;
+  document.getElementById('divGrid').innerHTML=favCardHtml+divHtml;
+  document.getElementById('utilList').innerHTML=UTILS.map(u=>{
+    let sub=u.sub;
+    if(u.id==='nilai'){ const n=getScores().length; sub = n>0 ? n+' nilai tercatat' : 'Belum ada data'; }
+    return `<div class="sec2-item" onclick="navigateTo('${u.id}')">
+      <div class="sec2-ic">${u.icon}</div>
+      <div class="sec2-txt"><div class="sec2-name">${u.name}</div><div class="sec2-sub">${sub}</div></div>
+      <div class="sec2-arrow">›</div>
+    </div>`;
+  }).join('');
   document.getElementById('statStation').textContent=totalStations;
   document.getElementById('statDivisi').textContent=DIVISIONS.length;
   updateAllProgressBadges();
@@ -13811,28 +13793,6 @@ function toggleAcc(headEl){
   headEl.closest('.sec').querySelectorAll('.acc-body').forEach(b=>b.classList.remove('open'));
   if(!isOpen){headEl.classList.add('active');body.classList.add('open');}
 }
-function initFC(){
-  const topics=['Semua',...new Set(FLASHCARDS.map(c=>c.topic))];
-  document.getElementById('fcChips').innerHTML=topics.map(t=>
-    `<div class="chip ${t===fcFilter?'active':''}" onclick="setFCTopic('${t}',this)">${t}</div>`).join('');
-  filterFC();
-}
-function setFCTopic(t,el){document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));el.classList.add('active');fcFilter=t;filterFC();}
-function filterFC(){fcCards=fcFilter==='Semua'?[...FLASHCARDS]:FLASHCARDS.filter(c=>c.topic===fcFilter);fcIdx=0;updateFC();}
-function updateFC(){
-  const c=fcCards[fcIdx];
-  document.getElementById('fcQ').textContent=c.q;
-  document.getElementById('fcA').textContent=c.a;
-  document.getElementById('fcCur').textContent=fcIdx+1;
-  document.getElementById('fcTot').textContent=fcCards.length;
-  document.getElementById('fcTopic').textContent=c.topic;
-  document.getElementById('fcFill').style.width=((fcIdx+1)/fcCards.length*100)+'%';
-  document.getElementById('fc-el').classList.remove('flipped');
-}
-function flipCard(){document.getElementById('fc-el').classList.toggle('flipped');}
-function nextCard(){fcIdx=(fcIdx+1)%fcCards.length;updateFC();}
-function prevCard(){fcIdx=(fcIdx-1+fcCards.length)%fcCards.length;updateFC();}
-function shuffleCards(){for(let i=fcCards.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[fcCards[i],fcCards[j]]=[fcCards[j],fcCards[i]];}fcIdx=0;updateFC();}
 function selMode(m,el){qMode=m;document.querySelectorAll('.mode-btn').forEach(b=>b.classList.remove('active'));el.classList.add('active');}
 function startQuiz(){
   qList=[...QUESTIONS].sort(()=>Math.random()-.5).slice(0,Math.min(24,QUESTIONS.length));
@@ -13974,9 +13934,263 @@ function updateAllProgressBadges(){
     if(subEl)subEl.textContent=done+'/'+total+' dipelajari';
   });
 }
-initFC();
+
+/* ===== FAVORIT ===== */
+function getFavs(){ try{return JSON.parse(localStorage.getItem('osce_favorites')||'{}');}catch(e){return {};} }
+function saveFavs(f){ try{localStorage.setItem('osce_favorites',JSON.stringify(f));}catch(e){} }
+function toggleFav(sid, el){
+  const f=getFavs();
+  f[sid]=!f[sid];
+  saveFavs(f);
+  el.classList.toggle('active', !!f[sid]);
+  el.innerHTML=f[sid]?'★':'☆';
+  el.closest('.acc-item').classList.toggle('is-fav', !!f[sid]);
+  renderFavCardBadge();
+  const favSec=document.getElementById('favorit');
+  if(favSec && favSec.classList.contains('active'))renderFavorites();
+}
+function renderFavCardBadge(){
+  const f=getFavs();
+  const n=Object.keys(f).filter(k=>f[k]).length;
+  const card=document.querySelector('#divGrid .menu-item .menu-ic');
+  if(!card)return;
+  let badge=card.querySelector('.menu-badge');
+  if(n>0){
+    if(!badge){badge=document.createElement('span');badge.className='menu-badge';badge.style.background='var(--gold)';card.appendChild(badge);}
+    badge.textContent=n;
+  } else if(badge){
+    badge.remove();
+  }
+}
+function initFavStars(){
+  const favs=getFavs();
+  DIVISIONS.forEach(d=>{
+    const sec=document.getElementById(d.id);
+    if(!sec)return;
+    const items=sec.querySelectorAll('.acc-item');
+    items.forEach((item,idx)=>{
+      const head=item.querySelector('.acc-head');
+      if(!head || head.querySelector('.fav-star'))return;
+      const sid=d.id+'::'+idx;
+      const star=document.createElement('button');
+      star.type='button';
+      star.className='fav-star'+(favs[sid]?' active':'');
+      star.innerHTML=favs[sid]?'★':'☆';
+      star.title='Tandai favorit';
+      star.dataset.sid=sid;
+      star.onclick=function(e){ e.stopPropagation(); toggleFav(sid,this); };
+      const arrow=head.querySelector('.acc-arrow');
+      head.insertBefore(star, arrow || null);
+      if(favs[sid])item.classList.add('is-fav');
+    });
+  });
+  renderFavCardBadge();
+}
+function renderFavorites(){
+  const favs=getFavs();
+  const wrap=document.getElementById('favList');
+  if(!wrap)return;
+  let html='';
+  let count=0;
+  DIVISIONS.forEach(d=>{
+    const sec=document.getElementById(d.id);
+    if(!sec)return;
+    const items=sec.querySelectorAll('.acc-item');
+    items.forEach((item,idx)=>{
+      const sid=d.id+'::'+idx;
+      if(!favs[sid])return;
+      count++;
+      const clone=item.cloneNode(true);
+      html+=`<div class="fav-div-tag">${d.icon} ${d.name}</div>`+clone.outerHTML;
+    });
+  });
+  if(count===0){
+    wrap.innerHTML=`<div class="empty-div"><div class="ei">⭐</div><div class="et">Belum ada station favorit</div><div class="ed">Buka divisi mana pun, lalu klik ikon bintang ☆ di sebelah judul station untuk menambahkannya ke sini.</div></div>`;
+  } else {
+    wrap.innerHTML=html;
+  }
+}
+function resetFavorites(){
+  if(!confirm('Hapus semua station favorit? Tindakan ini tidak bisa dibatalkan.'))return;
+  saveFavs({});
+  document.querySelectorAll('.fav-star.active').forEach(s=>{s.classList.remove('active');s.innerHTML='☆';});
+  document.querySelectorAll('.acc-item.is-fav').forEach(i=>i.classList.remove('is-fav'));
+  renderFavCardBadge();
+  renderFavorites();
+}
+
+/* ===== NILAI OSCE (TRACK RECORD) ===== */
+const SCORE_KEY='osce_score_records';
+const TARGET_KEY='osce_score_target';
+function getScores(){ try{return JSON.parse(localStorage.getItem(SCORE_KEY)||'[]');}catch(e){return [];} }
+function saveScoresArr(arr){ try{localStorage.setItem(SCORE_KEY,JSON.stringify(arr));}catch(e){} }
+function getTarget(){ try{const v=parseFloat(localStorage.getItem(TARGET_KEY));return isNaN(v)?null:v;}catch(e){return null;} }
+function saveTarget(v){ try{localStorage.setItem(TARGET_KEY,String(v));}catch(e){} }
+function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function gradeInfo(score){
+  if(score>=90)return {cls:'score-grade-excellent',label:'Istimewa'};
+  if(score>=80)return {cls:'score-grade-great',label:'Sangat Baik'};
+  if(score>=70)return {cls:'score-grade-good',label:'Baik'};
+  if(score>=60)return {cls:'score-grade-warn',label:'Cukup'};
+  return {cls:'score-grade-low',label:'Perlu Belajar Lagi'};
+}
+function monthLabel(ym){
+  if(!ym)return '-';
+  const parts=ym.split('-'); const y=parts[0], m=parts[1];
+  const names=['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
+  const mi=parseInt(m,10)-1;
+  return (names[mi]||m)+' '+y;
+}
+function addScoreEntry(){
+  const monthEl=document.getElementById('scoreMonthInput');
+  const valEl=document.getElementById('scoreValueInput');
+  const noteEl=document.getElementById('scoreNoteInput');
+  const month=monthEl.value;
+  const val=parseFloat(valEl.value);
+  const note=noteEl.value.trim();
+  if(!month){alert('Pilih bulan ujian dulu ya.');return;}
+  if(isNaN(val)||val<0||val>100){alert('Masukkan nilai antara 0–100.');return;}
+  const arr=getScores();
+  const existingIdx=arr.findIndex(e=>e.month===month);
+  if(existingIdx>=0){
+    if(!confirm('Sudah ada nilai untuk bulan ini. Timpa dengan nilai baru?'))return;
+    arr[existingIdx]={...arr[existingIdx], score:val, note};
+  } else {
+    arr.push({id:Date.now()+'-'+Math.random().toString(16).slice(2), month, score:val, note});
+  }
+  saveScoresArr(arr);
+  valEl.value=''; noteEl.value='';
+  renderScores();
+  updateNilaiUtilSub();
+}
+function deleteScoreEntry(id){
+  if(!confirm('Hapus data nilai ini?'))return;
+  saveScoresArr(getScores().filter(e=>e.id!==id));
+  renderScores();
+  updateNilaiUtilSub();
+}
+function updateNilaiUtilSub(){
+  const item=document.querySelector('#utilList .sec2-item[onclick*="\'nilai\'"] .sec2-sub');
+  if(!item)return;
+  const n=getScores().length;
+  item.textContent = n>0 ? n+' nilai tercatat' : 'Belum ada data';
+}
+function setScoreTarget(){
+  const v=parseFloat(document.getElementById('scoreTargetInput').value);
+  if(isNaN(v)||v<0||v>100){alert('Masukkan target 0–100.');return;}
+  saveTarget(v);
+  renderScores();
+}
+function buildScoreChart(arr, target){
+  const w=320,h=150,pad=28;
+  const scores=arr.map(e=>e.score);
+  const lo=Math.min(...scores, target!=null?target:100);
+  const hi=Math.max(...scores, target!=null?target:0);
+  const min=Math.max(0, lo-10), max=Math.min(100, hi+10);
+  const range=(max-min)||1;
+  const stepX=arr.length>1?(w-2*pad)/(arr.length-1):0;
+  const pts=arr.map((e,i)=>{
+    const x=pad+i*stepX;
+    const y=h-pad-((e.score-min)/range)*(h-2*pad);
+    return {x,y,e};
+  });
+  const polyline=pts.map(p=>p.x.toFixed(1)+','+p.y.toFixed(1)).join(' ');
+  const circles=pts.map(p=>'<circle cx="'+p.x.toFixed(1)+'" cy="'+p.y.toFixed(1)+'" r="4" fill="var(--m)" stroke="#fff" stroke-width="1.5"/>').join('');
+  const labels=pts.map((p,i)=>{
+    if(pts.length<=6 || i===0 || i===pts.length-1){
+      return '<text x="'+p.x.toFixed(1)+'" y="'+(h-6)+'" font-size="8" fill="#6B5B4E" text-anchor="middle">'+monthLabel(p.e.month)+'</text>';
+    }
+    return '';
+  }).join('');
+  let targetLine='';
+  if(target!=null && target>=min && target<=max){
+    const ty=h-pad-((target-min)/range)*(h-2*pad);
+    targetLine='<line x1="'+pad+'" y1="'+ty.toFixed(1)+'" x2="'+(w-pad)+'" y2="'+ty.toFixed(1)+'" stroke="var(--gold)" stroke-width="1.5" stroke-dasharray="4 3"/>'+
+      '<text x="'+(w-pad)+'" y="'+(ty-4).toFixed(1)+'" font-size="8" fill="var(--gold)" text-anchor="end">Target '+target+'</text>';
+  }
+  return '<svg viewBox="0 0 '+w+' '+h+'" style="width:100%;height:auto;display:block">'+targetLine+
+    '<polyline points="'+polyline+'" fill="none" stroke="var(--m)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>'+
+    circles+labels+'</svg>';
+}
+function renderScores(){
+  const arr=[...getScores()].sort((a,b)=>a.month.localeCompare(b.month));
+  const wrap=document.getElementById('scoreList');
+  const statsWrap=document.getElementById('scoreStatsGrid');
+  if(!wrap||!statsWrap)return;
+  const target=getTarget();
+  const targetInput=document.getElementById('scoreTargetInput');
+  if(targetInput && document.activeElement!==targetInput) targetInput.value = target!=null?target:'';
+
+  if(arr.length===0){
+    statsWrap.innerHTML='';
+    document.getElementById('scoreChartCard').style.display='none';
+    document.getElementById('scoreMotivation').innerHTML='';
+    wrap.innerHTML='<div class="empty-div"><div class="ei">🏆</div><div class="et">Belum ada nilai tercatat</div><div class="ed">Setiap bulan setelah OSCE, catat nilaimu di sini. Lihat progresmu dari waktu ke waktu — pelan tapi pasti!</div></div>';
+    return;
+  }
+
+  const scores=arr.map(e=>e.score);
+  const last=arr[arr.length-1];
+  const best=Math.max(...scores);
+  const avg=(scores.reduce((a,b)=>a+b,0)/scores.length);
+
+  statsWrap.innerHTML=
+    '<div class="status-card" style="--sc:var(--m)"><div class="sc-icon">📍</div><div class="sc-num">'+last.score+'</div><div class="sc-lbl">Nilai Terakhir</div></div>'+
+    '<div class="status-card" style="--sc:var(--gold)"><div class="sc-icon">🏅</div><div class="sc-num">'+best+'</div><div class="sc-lbl">Tertinggi</div></div>'+
+    '<div class="status-card" style="--sc:var(--teal)"><div class="sc-icon">📊</div><div class="sc-num">'+avg.toFixed(1)+'</div><div class="sc-lbl">Rata-rata</div></div>'+
+    '<div class="status-card" style="--sc:var(--gr)"><div class="sc-icon">🗓️</div><div class="sc-num">'+arr.length+'</div><div class="sc-lbl">Kali Ujian</div></div>';
+
+  let moHtml='';
+  if(arr.length===1){
+    moHtml='<div class="motivation-box motivation-first"><div class="mo-icon">🚀</div><div>Nilai pertama tercatat: <strong>'+last.score+'</strong>! Ini titik awal, bukan patokan akhir — ayo pantau terus progresnya tiap bulan.</div></div>';
+  } else {
+    const prev=arr[arr.length-2];
+    const diff=+(last.score-prev.score).toFixed(1);
+    if(diff>0){
+      moHtml='<div class="motivation-box motivation-up"><div class="mo-icon">🔥</div><div>Naik <strong>'+diff+'</strong> poin dari bulan sebelumnya ('+prev.score+' → '+last.score+')! Pertahankan ritme belajarnya 💪</div></div>';
+    } else if(diff<0){
+      moHtml='<div class="motivation-box motivation-down"><div class="mo-icon">🌱</div><div>Turun '+Math.abs(diff)+' poin dari bulan lalu ('+prev.score+' → '+last.score+'). Wajar naik-turun — cek catatan kekurangannya, lalu fokus lagi di situ bulan ini.</div></div>';
+    } else {
+      moHtml='<div class="motivation-box motivation-flat"><div class="mo-icon">📘</div><div>Nilai stabil di '+last.score+'. Coba variasikan latihan (Mode Ujian/Flashcard) buat dorong naik ke level berikutnya.</div></div>';
+    }
+  }
+  if(target!=null){
+    if(last.score>=target){
+      moHtml+='<div class="motivation-box motivation-up"><div class="mo-icon">🎯</div><div>Target '+target+' tercapai! Nilai terakhir '+last.score+'. Mantap, pertahankan ya!</div></div>';
+    } else {
+      const gap=(target-last.score).toFixed(1);
+      moHtml+='<div class="motivation-box motivation-flat"><div class="mo-icon">🎯</div><div>Kurang <strong>'+gap+'</strong> poin lagi untuk capai target '+target+'. Bisa dikejar bulan depan!</div></div>';
+    }
+  }
+  document.getElementById('scoreMotivation').innerHTML=moHtml;
+
+  document.getElementById('scoreChartCard').style.display='block';
+  document.getElementById('scoreChartWrap').innerHTML=buildScoreChart(arr, target);
+
+  wrap.innerHTML=[...arr].reverse().map(e=>{
+    const g=gradeInfo(e.score);
+    return '<div class="score-card">'+
+      '<div class="score-badge '+g.cls+'"><div class="sbn">'+e.score+'</div><div class="sbu">'+g.label+'</div></div>'+
+      '<div class="score-info"><div class="score-month">'+monthLabel(e.month)+'</div>'+
+      (e.note?'<div class="score-note">'+escapeHtml(e.note)+'</div>':'')+'</div>'+
+      '<button class="score-del" onclick="deleteScoreEntry(\''+e.id+'\')" title="Hapus">🗑️</button>'+
+    '</div>';
+  }).join('');
+}
+
 renderHome();
 initChecklist();
+initFavStars();
+renderScores();
+(function(){
+  const favListEl=document.getElementById('favList');
+  if(favListEl){
+    favListEl.addEventListener('click', function(e){
+      const star=e.target.closest('.fav-star');
+      if(star){ e.stopPropagation(); toggleFav(star.dataset.sid, star); }
+    }, true);
+  }
+})();
 
 /* ═══════════ MODE UJIAN — LATIHAN STATION ACAK, JUDUL DISEMBUNYIKAN ═══════════ */
 let examQueue=[];
@@ -14062,10 +14276,35 @@ function endExam(){
   document.getElementById('examSetup').style.display='block';
 }
 
-// PWA: register service worker for offline support & installability
+// PWA: register service worker for offline support & installability.
+// The SW uses a network-first strategy for this HTML file, so every refresh
+// (while online) picks up the latest published version automatically — no
+// manual cache-clearing needed. We also force the new SW to take over right
+// away and reload once, so an update is visible on the very next refresh.
 if('serviceWorker' in navigator){
   window.addEventListener('load', ()=>{
-    navigator.serviceWorker.register('sw.js').catch(err=>console.log('SW registration failed:', err));
+    navigator.serviceWorker.register('sw.js').then(reg=>{
+      reg.addEventListener('updatefound', ()=>{
+        const nw=reg.installing;
+        if(!nw)return;
+        nw.addEventListener('statechange', ()=>{
+          if(nw.state==='installed' && navigator.serviceWorker.controller){
+            nw.postMessage('SKIP_WAITING');
+          }
+        });
+      });
+      // Re-check for a newer sw.js whenever the tab regains focus.
+      document.addEventListener('visibilitychange', ()=>{
+        if(document.visibilityState==='visible')reg.update();
+      });
+    }).catch(err=>console.log('SW registration failed:', err));
+
+    let refreshed=false;
+    navigator.serviceWorker.addEventListener('controllerchange', ()=>{
+      if(refreshed)return;
+      refreshed=true;
+      window.location.reload();
+    });
   });
 }
 </script>
